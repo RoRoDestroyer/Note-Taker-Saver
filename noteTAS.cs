@@ -6,12 +6,12 @@ namespace ConsoleApp1
 {
     class Program
     {
-        private static string note = ""; // Declare note at the class level.
+        private static string note = "";
 
         static void Main(string[] args)
         {
             Console.Write("Write note: ");
-            note = GetSecureInput(); // Assign the value to the class-level note variable.
+            note = GetSecureInput(); 
 
             Console.Clear();
 
@@ -43,8 +43,7 @@ namespace ConsoleApp1
                     break;
                 }
                 else if (char.IsLetterOrDigit(key.KeyChar) || char.IsWhiteSpace(key.KeyChar) || char.IsPunctuation(key.KeyChar))
-                {
-                    // Append the character to the input.
+                { 
                     Console.Write("*");
                     input += key.KeyChar;
                 }
@@ -57,16 +56,15 @@ namespace ConsoleApp1
         {
             string filePath = @"C:\Users\rags2\Downloads\notes.txt"; // Put path to txt document
 
-            File.WriteAllText(filePath, content);
+            File.AppendAllText(filePath, content + "\n\n");
 
-            Console.WriteLine("String saved to file successfully!");
+            Console.WriteLine("Note saved to file successfully!");
 
             Console.Write("Do you want to open the file? (Y/N): ");
             string openChoice = Console.ReadLine();
 
             if (openChoice != null && openChoice.ToUpper() == "Y")
             {
-                // Open the saved file with the default associated program (e.g., Notepad).
                 Process.Start(filePath);
             }
 
